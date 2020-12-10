@@ -38,6 +38,7 @@ jobs:
         
     - name: stage files
       run: |
+        ls -l
         mkdir prod
         mv dist/bundle.js prod
         mv static/* dist/*
