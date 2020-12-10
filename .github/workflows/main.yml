@@ -38,10 +38,8 @@ jobs:
         
     - name: stage files
       run: |
-        ls -l
-        ls -l dist
         mkdir prod
-        mv dist/bundle.js prod
+        mv dist/bundle.js prod/
         mv static/* prod/*
         find . -mindepth 1 -name prod -prune -o -exec rm -rf {} \;
         mv prod/* .
