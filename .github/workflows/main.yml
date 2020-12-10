@@ -65,11 +65,13 @@ jobs:
 #         mv prod/* .
 #         rmdir prod
         
-    - name: Add & Commit
-      uses: EndBug/add-and-commit@v5.2.0
-      with:
-        add: '. -A'
-        branch: master
-        push: true
+    - name: Update master
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'alex.dykstra@ncr.com'
+        git stash
+        git checkout master
+        git stash apply
+        git push origin master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
