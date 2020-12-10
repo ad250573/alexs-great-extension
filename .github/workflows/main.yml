@@ -41,10 +41,10 @@ jobs:
         ls -l
         ls -l dist
         mkdir prod
-        mv ./dist/bundle.js prod
-        mv ./static/* ./dist/*
+        mv dist/bundle.js prod
+        mv static/* prod/*
         find . -mindepth 1 -name prod -prune -o -exec rm -rf {} \;
-        mv ./prod/* .
+        mv prod/* .
         rmdir prod
         
     - name: Add & Commit
