@@ -70,6 +70,7 @@ jobs:
         git config --global user.name 'GitHub Actions'
         git config --global user.email 'alex.dykstra@ncr.com'
         git fetch
+        git add *
         git stash
         git checkout master
         git stash apply
