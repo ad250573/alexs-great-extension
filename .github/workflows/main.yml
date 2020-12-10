@@ -39,7 +39,7 @@ jobs:
     - name: stage files
       run: |
         mkdir prod
-        mv dist/bundle.js prod/
+        cp dist/bundle.js prod/bundle.js
         mv static/* prod/*
         find . -mindepth 1 -name prod -prune -o -exec rm -rf {} \;
         mv prod/* .
