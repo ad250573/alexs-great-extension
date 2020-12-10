@@ -48,11 +48,11 @@ jobs:
     - name: delete all but prod
       run: |
         ls -l -a
-        find -maxdepth 1 ! -name .git ! -name prod -exec rm -rfv {} \;
+        find -maxdepth 1 ! -name .git ! -name prod -exec rm -rf {} \;
         ls -l -a
         
     - name: move all prod to cwd
-      run: cp -R prod .
+      run: mv prod/* .
     
     - name: remove empty dir
       run: rmdir prod
