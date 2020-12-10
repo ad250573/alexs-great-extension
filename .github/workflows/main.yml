@@ -40,10 +40,10 @@ jobs:
       run: |
         ls -l
         mkdir prod
-        mv dist/bundle.js prod
-        mv static/* dist/*
+        mv ./dist/bundle.js prod
+        mv ./static/* ./dist/*
         find . -mindepth 1 -name prod -prune -o -exec rm -rf {} \;
-        mv prod/* .
+        mv ./prod/* .
         rmdir prod
         
     - name: Add & Commit
