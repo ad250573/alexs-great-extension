@@ -73,8 +73,8 @@ jobs:
         git add *
         git stash
         git checkout master
-        git add *
-        git stash apply
+        git checkout stash -- .
+        git commit -m "Updating master"
         git push origin master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
