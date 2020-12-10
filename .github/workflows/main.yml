@@ -23,7 +23,7 @@ jobs:
         node-version: [12.x]
 
     steps:
-    - uses: actions/checkout@v1
+    - uses: actions/checkout@v2
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@v1
       with:
@@ -36,19 +36,45 @@ jobs:
         yarn install
         yarn build
         
-    - name: stage files
-      run: |
-        mkdir prod
-        mv dist/bundle.js prod
-        mv static/* dist/*
-        find . -mindepth 1 -name prod -prune -o -exec rm -rf {} \;
-        mv prod/* .
-        rmdir prod
+    - name: setup dir
+      run: mkdir prod
+
+    - name: copy dist
+      run: cp -R dist/* prod/
+
+    - name: copy static
+      run: cp -R static/* prod/
         
-    - name: Add & Commit
-      uses: EndBug/add-and-commit@v5.2.0
-      with:
-        push: true
-        branch: master
+    - name: delete all but prod
+      run: |
+        find -maxdepth 1 ! -name .git ! -name prod -exec rm -rf {} \;
+        
+    - name: move all prod to cwd
+      run: |
+        mv prod/* .
+        ls -al
+    
+    - name: remove empty dir
+      run: rmdir prod
+#     - name: stage files
+#       run: |
+#         mkdir prod
+#         cp dist/bundle.js prod/bundle.js
+#         mv static/* prod/*
+#         find . -mindepth 1 -name prod -prune -o -exec rm -rf {} \;
+#         mv prod/* .
+#         rmdir prod
+        
+    - name: Update master
+      run: |
+        git config --global user.name 'GitHub Actions'
+        git config --global user.email 'alex.dykstra@ncr.com'
+        git fetch
+        git add *
+        git stash
+        git checkout master
+        git checkout stash -- .
+        git commit -m "Updating master"
+        git push origin master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
