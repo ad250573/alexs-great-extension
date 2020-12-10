@@ -40,10 +40,10 @@ jobs:
       run: mkdir prod
 
     - name: copy dist
-      run: cp -R dist prod/
+      run: cp -R dist/* prod/
 
     - name: copy static
-      run: cp -R static prod/
+      run: cp -R static/* prod/
         
     - name: delete all but prod
       run: |
