@@ -52,7 +52,7 @@ jobs:
         ls -l -a
         
     - name: move all prod to cwd
-      run: cp -R prod ./
+      run: cp -R prod .
     
     - name: remove empty dir
       run: rmdir prod
