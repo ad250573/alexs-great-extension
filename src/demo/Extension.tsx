@@ -142,7 +142,7 @@ class ExtensionInternal extends React.Component<ExtensionProps, {}> {
         )}
         <Box m="large">
           <Heading fontWeight="semiBold">
-            Welcome to the Alex's Looker Extension Framework Project! (third commit)
+            Welcome to the Alex's Looker Extension Framework Project! (fourth commit)
           </Heading>
           <Flex width="100%">
             <LookList
