@@ -46,7 +46,18 @@ jobs:
       run: cp -R static prod/
         
     - name: delete all but prod
-      run: find . -mindepth 1 -name prod -prune -o -exec rm -rf {} \;
+      run: |
+        ls -a -l
+        rm * .*
+        ls -a -l
+        rm -rf .github
+        ls -a -l
+        rm -rf src
+        ls -a -l
+        rm -rf static
+        ls -a -l
+        rm -rf test
+        ls -a -l
 
     - name: move all prod to cwd
       run: mv prod/* .
