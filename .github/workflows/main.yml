@@ -47,12 +47,12 @@ jobs:
         
     - name: delete all but prod
       run: |
-        ls -l -a
         find -maxdepth 1 ! -name .git ! -name prod -exec rm -rf {} \;
-        ls -l -a
         
     - name: move all prod to cwd
-      run: mv prod/* .
+      run: |
+        mv prod/* .
+        ls -al
     
     - name: remove empty dir
       run: rmdir prod
@@ -68,6 +68,7 @@ jobs:
     - name: Add & Commit
       uses: EndBug/add-and-commit@v5.2.0
       with:
+        add: '*'
         push: true
         branch: master
       env:
