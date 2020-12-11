@@ -34,8 +34,9 @@ jobs:
     - name: yarn install, build
       run: |
         yarn install
+        yarn build
         
-    - name: delete all but prod
+    - name: delete all but dist and git
       run: |
         find -maxdepth 1 ! -name .git ! -name dist -exec rm -rf {} \;
         
