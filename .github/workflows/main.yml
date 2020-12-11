@@ -34,36 +34,18 @@ jobs:
     - name: yarn install, build
       run: |
         yarn install
-        yarn build
-        
-    - name: setup dir
-      run: mkdir prod
-
-    - name: copy dist
-      run: cp -R dist/* prod/
-
-    - name: copy static
-      run: cp -R static/* prod/
         
     - name: delete all but prod
       run: |
-        find -maxdepth 1 ! -name .git ! -name prod -exec rm -rf {} \;
+        find -maxdepth 1 ! -name .git ! -name dist -exec rm -rf {} \;
         
-    - name: move all prod to cwd
+    - name: move all dist to cwd
       run: |
-        mv prod/* .
+        mv dist/* .
         ls -al
     
     - name: remove empty dir
-      run: rmdir prod
-#     - name: stage files
-#       run: |
-#         mkdir prod
-#         cp dist/bundle.js prod/bundle.js
-#         mv static/* prod/*
-#         find . -mindepth 1 -name prod -prune -o -exec rm -rf {} \;
-#         mv prod/* .
-#         rmdir prod
+      run: rmdir dist
         
     - name: Update master
       run: |
