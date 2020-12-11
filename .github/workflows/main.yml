@@ -57,6 +57,7 @@ jobs:
         git stash
         git checkout master
         git checkout stash -- .
+        git add *
         git commit -m "Updating master"
         git push origin master
       env:
