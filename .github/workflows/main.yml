@@ -61,3 +61,11 @@ jobs:
         git push origin master
       env:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }} 
+        
+    - name: Deploy to Looker Production
+      uses: joelwmale/webhook-action@2.0.2
+      with:
+        # The url to send the webhook event to
+        url: https://slalomconsulting.looker.com/webhooks/projects/alexs-great-extension/deploy/branch/master
+
+    
