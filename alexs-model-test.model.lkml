@@ -1,2 +1,7 @@
 connection: "snowlooker"
-label: "1) eCommerce with Event Data"
+label: "Alex - Test Extension"
+
+include: "myview.view"
+explore: myview {
+  view_label: "My View"
+}
