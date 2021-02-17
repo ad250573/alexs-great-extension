@@ -12,3 +12,8 @@ application: alexs-great-extension {
     oauth2_urls: []
   }
 }
+visualization: {
+  id: "time_of_day"
+  label: "Time of Day (test)"
+  file: "time_of_day.js"
+}
